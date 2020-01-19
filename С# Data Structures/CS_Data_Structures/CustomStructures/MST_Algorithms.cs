@@ -16,7 +16,7 @@ namespace CustomStructures
                 set.MakeSet(nodesKey);
             }
 
-            List<Edge> sortedEdges = graph.edges.OrderBy(x => x.Weight).ToList();
+            List<Edge> sortedEdges = graph.Edges.OrderBy(x => x.Weight).ToList();
 
             foreach (var edge in sortedEdges)
             {
@@ -28,12 +28,12 @@ namespace CustomStructures
             }
         }
 
-        public static void Prim(WeightedUndirectedGraph graph)
+        public static void Prim(WeightedUndirectedGraph<string> graph)
         {
-            Dictionary<string, List<Connection>> Nodes = graph.Nodes;
+            Dictionary<string, WeightedUndirectedGraphNode<string, int>> nodes = graph.Nodes;
             Dictionary<string, bool> selected = new Dictionary<string, bool>();
 
-            foreach (var nodesKey in Nodes.Keys)
+            foreach (var nodesKey in nodes.Keys)
             {
                 selected.Add(nodesKey, false);
             }
@@ -45,24 +45,24 @@ namespace CustomStructures
             string node2 = "";
             int weight = 0;
             int edgeNumber = 0;
-            while (edgeNumber < Nodes.Count - 1)
+            while (edgeNumber < nodes.Count - 1)
             {
                 int min = Int32.MaxValue;
 
-                foreach (var key in Nodes.Keys)
+                foreach (var key in nodes.Keys)
                 {
                     if (selected[key])
                     {
-                        foreach (var connection in Nodes[key])
+                        foreach (var connection in nodes[key].GetNeighbors())
                         {
-                            if (!selected[connection.Data])
+                            if (!selected[connection.Key])
                             {
-                                if (connection.Weight < min)
+                                if (connection.Value.ConnectionWeight < min)
                                 {
-                                    min = connection.Weight;
+                                    min = connection.Value.ConnectionWeight;
                                     node1 = key;
-                                    node2 = connection.Data;
-                                    weight = connection.Weight;
+                                    node2 = connection.Key;
+                                    weight = connection.Value.ConnectionWeight;
                                 }
                             }
                         }

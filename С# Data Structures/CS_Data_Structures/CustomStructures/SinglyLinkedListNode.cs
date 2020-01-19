@@ -1,9 +1,10 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace CustomStructures
 {
-    public class SinglyLinkedListNode<T>
+    public class SinglyLinkedListNode<T> where T:IComparable
     {
         public T Data { get; set; }
         public SinglyLinkedListNode<T> Next { get; set; }

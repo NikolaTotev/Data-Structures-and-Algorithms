@@ -11,6 +11,7 @@ namespace CustomStructures
         private readonly int m_InfinityWeightValue;
         private readonly int m_ZeroWeightValue;
         public Dictionary<T, WeightedUndirectedGraphNode<T, int>> Nodes { get; set; }
+        public List<Edge> Edges { get; set; }
         public int NumberOfComponents { get; set; }
 
 
@@ -141,7 +142,7 @@ namespace CustomStructures
             }
         }
 
-        public void FindPath(T source, Func<SortedDictionary<WeightedUndirectedGraphNode<T, int>,int>,void> resultHandler)
+        public void FindPath(T source, Func<SortedDictionary<WeightedUndirectedGraphNode<T, int>,int>,bool> resultHandler)
         {
             WeightedUndirectedGraphNode<T, int> sourceNode = Nodes[source];
             SortedDictionary<WeightedUndirectedGraphNode<T, int>, int> distances = new SortedDictionary<WeightedUndirectedGraphNode<T, int>, int>();
@@ -165,9 +166,6 @@ namespace CustomStructures
                     }
                 }
             }
-
-            resultHandler();
-
         }
 
         public int CountComponents()
