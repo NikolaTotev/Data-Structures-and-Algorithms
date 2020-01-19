@@ -48,6 +48,8 @@
     <Compile Include="DuplicateKeyComparer.cs" />
     <Compile Include="Edge.cs" />
     <Compile Include="IWeighable.cs" />
+    <Compile Include="SinglyLinkedList.cs" />
+    <Compile Include="SinglyLinkedListNode.cs" />
     <Compile Include="MST_Algorithms.cs" />
     <Compile Include="PriorityQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
