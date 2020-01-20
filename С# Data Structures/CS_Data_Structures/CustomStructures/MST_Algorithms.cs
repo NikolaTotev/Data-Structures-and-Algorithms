@@ -8,15 +8,17 @@ namespace CustomStructures
 {
     public static class MST_Algorithms
     {
-        public static void Kruskal(WeightedUndirectedGraph<string> graph)
+        public static void Kruskal(ref WeightedUndirectedGraph<T> graph) 
         {
-            DisjointSet set = new DisjointSet();
+            DisjointSet<T>set = new DisjointSet<T>();
             foreach (var nodesKey in graph.Nodes.Keys)
             {
                 set.MakeSet(nodesKey);
             }
 
-            List<Edge> sortedEdges = graph.Edges.OrderBy(x => x.Weight).ToList();
+            List<Edge<T>> sortedEdges = new List<Edge<T>>();
+         
+            sortedEdges = graph.Edges.OrderBy(if(x is WeightedUndirectedGraphNode<T, int> node) => node.Weight).ToList<T>();
 
             foreach (var edge in sortedEdges)
             {

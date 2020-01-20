@@ -7,37 +7,37 @@ using System.Threading.Tasks;
 namespace CustomStructures
 {
     //Todo make with generics.
-    class DisjointSet
+    class DisjointSet<T> where T:IComparable
     {
-        private Dictionary<string, string> Parent { get; set; }
-        public Dictionary<string, int> Rank { get; set; }
+        private Dictionary<T, T> Parent { get; set; }
+        public Dictionary<T, int> Rank { get; set; }
 
         public DisjointSet()
         {
-            Parent = new Dictionary<string, string>();
-            Rank = new Dictionary<string, int>();
+            Parent = new Dictionary<T, T>();
+            Rank = new Dictionary<T, int>();
         }
 
 
-        public void MakeSet(string x)
+        public void MakeSet(T x)
         {
             Parent[x] = x;
             Rank[x] = 0;
         }
 
-        public string FindSet(string x)
+        public T FindSet(T x)
         {
-            if (Parent[x] != x)
+            if (!Parent[x].Equals(x)) // Parent[x] != x
             {
                 Parent[x] = FindSet(Parent[x]);
             }
 
             return Parent[x];
         }
-        public void Union(string x, string y)
+        public void Union(T x, T y)
         {
-            string representativeX = FindSet(x);
-            string representativeY = FindSet(y);
+            T representativeX = FindSet(x);
+            T representativeY = FindSet(y);
 
             if (Rank[representativeX] == Rank[representativeY])
             {
@@ -55,12 +55,12 @@ namespace CustomStructures
             }
         }
 
-        public string FindImmediateParent(string x)
+        public T FindImmediateParent(T x)
         {
             return Parent[x];
         }
 
-        public int FindRank(string x)
+        public int FindRank(T x)
         {
             return Rank[x];
         }

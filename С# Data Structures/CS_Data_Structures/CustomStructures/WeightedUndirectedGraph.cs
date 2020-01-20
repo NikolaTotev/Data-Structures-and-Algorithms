@@ -11,7 +11,7 @@ namespace CustomStructures
         private readonly int m_InfinityWeightValue;
         private readonly int m_ZeroWeightValue;
         public Dictionary<T, WeightedUndirectedGraphNode<T, int>> Nodes { get; set; }
-        public List<Edge> Edges { get; set; }
+        public List<Edge<string>> Edges { get; set; }
         public int NumberOfComponents { get; set; }
 
 

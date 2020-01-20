@@ -49,6 +49,7 @@
     <Compile Include="DuplicateKeyComparer.cs" />
     <Compile Include="Edge.cs" />
     <Compile Include="IWeighable.cs" />
+    <Compile Include="MultiGraphNode.cs" />
     <Compile Include="SinglyLinkedList.cs" />
     <Compile Include="SinglyLinkedListNode.cs" />
     <Compile Include="MST_Algorithms.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="UndirectedGraph.cs" />
     <Compile Include="UndirectedGraphNode.cs" />
     <Compile Include="WeightedGraphConnection.cs" />
+    <Compile Include="WeightedMultiGraph.cs" />
     <Compile Include="WeightedUndirectedGraph.cs" />
     <Compile Include="WeightedUndirectedGraphNode.cs" />
   </ItemGroup>

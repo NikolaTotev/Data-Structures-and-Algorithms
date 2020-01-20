@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CustomStructures
 {
-    public class Edge
+    public class Edge<T>where  T:IComparable
     {
-        public string Node1 { get; set; }
-        public string Node2 { get; set; }
+        public T Node1 { get; set; }
+        public T Node2 { get; set; }
         public int Weight { get; set; }
 
-        public Edge(string node1, string node2, int weight)
+        public Edge(T node1, T node2, int weight)
         {
             Node1 = node1;
             Node2 = node2;
